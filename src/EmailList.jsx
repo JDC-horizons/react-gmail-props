@@ -14,14 +14,13 @@ const EmailList = ({ emails, toggleRead, toggleStar }) => {
 };
 
 const EmailItem = ({ email, toggleRead, toggleStar }) => {
-  const { read, starred, sender, title } = email;
   return (
-    <li className={`email ${email ? "read" : "unread"}`}>
+    <li className={`email ${email.read ? "read" : "unread"}`}>
       <div className="select">
         <input
           className="select-checkbox"
           type="checkbox"
-          checked={read}
+          checked={email.read}
           onChange={() => toggleRead(email)}
         />
       </div>
@@ -29,12 +28,12 @@ const EmailItem = ({ email, toggleRead, toggleStar }) => {
         <input
           className="star-checkbox"
           type="checkbox"
-          checked={starred}
+          checked={email.starred}
           onChange={() => toggleStar(email)}
         />
       </div>
-      <div className="sender">{sender}</div>
-      <div className="title">{title}</div>
+      <div className="sender">{email.sender}</div>
+      <div className="title">{email.title}</div>
     </li>
   );
 };
